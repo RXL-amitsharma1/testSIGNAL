@@ -1,0 +1,30 @@
+{
+    "strict": true,
+    "debug": true,
+    "sp": {
+        "entityId": "dssuser",
+        "assertionConsumerService": {
+            "url": "http://127.0.0.1:7000/?acs",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+        },
+        "singleLogoutService": {
+            "url": "http://127.0.0.1:7000/?sls",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "NameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+        "x509cert": "MIICnTCCAYUCBgF9fx5kZzANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdkc3N1c2VyMB4XDTIxMTIwMzA3MDUzN1oXDTMxMTIwMzA3MDcxN1owEjEQMA4GA1UEAwwHZHNzdXNlcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIS7ghtnYp4j4OrWjPr6zHle2FmtcV8Zhjud9JSXZ+YGQXfuL8v7l/uBO5PbGHB6z6YvtQAanuMixWGXop5NoRtsVCor+J6u+cUNsNwXjqg7RfidrplMAhiDLiVrIAgzY2bFkWqkUKktnJisrRltPXVrHN70q4s4Q6GdPU4MQIhmPMVTNrz+D703I3WUkCt5bkKfpArXmIKmofO5wHblTOK1gHhe88asgNchTihrFbscSy83/o9vW7Sr0k9A6L/5UCQhtNFMf52P8Y1HDa/wyYkJjU0QoJAmXpqAxXxVzoJTNmheA0BRn3sPZxVerl5LzmscdKRYwrRDsHD03etgmrMCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAShAPSwpDVnlBD+xDSJ5yxSixVJQqci6OlkBe/FLHJhq/bnqt2UUs9al0lK73haBkR474nd0J1ypNxyZIdI0OjJZBRI7UjWClInOMOwUSM66JelgPANGoRIL1w7CHJfAjUgUPu2L2NzdbT28Tn+E6ZQ51WCf4tsPBB6TBXyiZIduIZoec4D6S+LxmS70rNyd1BGYz6n+7Oyax42Dwp9TskqoMtF74V16NAEqjt7iB70S9psXmv3SXVSoruXVmX98usekK9gBF7+0E9iUOJ+8Yym5+KnK98oicNt2jSDDLJCjtbfqEzE5o1Nht2HdrVd7tkJ4OBNWrSZcawvqf55TQYQ==",
+        "privateKey": "MIIEpAIBAAKCAQEAhLuCG2diniPg6taM+vrMeV7YWa1xXxmGO530lJdn5gZBd+4vy/uX+4E7k9sYcHrPpi+1ABqe4yLFYZeink2hG2xUKiv4nq75xQ2w3BeOqDtF+J2umUwCGIMuJWsgCDNjZsWRaqRQqS2cmKytGW09dWsc3vSrizhDoZ09TgxAiGY8xVM2vP4PvTcjdZSQK3luQp+kCteYgqah87nAduVM4rWAeF7zxqyA1yFOKGsVuxxLLzf+j29btKvST0Dov/lQJCG00Ux/nY/xjUcNr/DJiQmNTRCgkCZemoDFfFXOglM2aF4DQFGfew9nFV6uXkvOaxx0pFjCtEOwcPTd62CaswIDAQABAoIBABbdnopOAyUvFR4fm+XYssTt2+OHB5LUeNVoXqwCcTmlNj4M4FsJmqMPHk5YXhtybLc6XLoJ2/lREiO/1Znj0a9BuDYToR7lEc4qj586x66fl2w+7ccm2u2SG68Ch2AiSit4OZbfe63JV8LNbHyG3yGNNEoMaEjxhmUfC2KYpb1Zbdwn0Cz/QCYNcMo9bkSniVgkz6hwWHUdHiJk6oBJbzly3v6xl7HjtKNqGTNmPkVuw4A5nsAdGOEPtzoe0eRnJif777Vn3bOjSZOZnibkOoKdZiAjFjiwB25KS/K6NQ2umWL48JXyNAW/kSrGV3wf1wW1KMnb9pJpE+9LzevQ8aECgYEA7lV7j8A6IejWaR6m/Y8+egPg8nJg2BlkPViz6JzKkx0A1K7Ux6Vf5r7Ry21omioS20sBj6ietzAc4wWRC8VAgtFOw10X3/fAVNlFYJZ7NH+bCHkJCoYS2FUOpXbvC0w6PR8oLmahi1uFpcZU75PIKuAlX2ITcs0M4QeAgGuh5qkCgYEAjpIt/a2NWN7/wDJqlzvpXqSkfGrL5fkeZvmNsOodRr64Pl4u6210iw8K4eLLTKMEbWuOewQdTofmlueYGX5k7/2QbAESZ5tEc4Fed7YLNHfFHs0zHSRIZlZ1S06XszSQQ9nS17uOv0ZSURr80I7CJnpoiYNJEP6TxQSxbIS2u/sCgYBu9Q8scpLd3JeNov6dh4XPqmScmxFpKhEX2mcPwYcyDEupuKdJNz25oFbtvUb4luPmgjn81sTlhhm8u4e2kiOhg66Gl52Y4LADEJATEpvTaiEURb0m0BqP6rGB6SgK+3cVo57CU3eb+IT1E6vRSdzj0Sy1BmUFil8XmLWDlBhw2QKBgQCKehNvrS14H4kbfhyn7go64gHd0sFfCvvrmwJzzsFG4KIF+ebqxrKHCsJQKr+6HTCEsw5+D74Dc96VvjautGSH8apgLR5aQaZX5lUCQ3BYsuhkhXzbFk24EMv2rEyORETHkn/HCKaaxEvZ+TOLws1zIDv/LORAPHT8zRUjyTfQFwKBgQDSFjj8uP56OYBDnUmRlsZF6CWXPkcIGNTWFa/LWGn5Axl2p92UKhbgiGl/FS6omuFKqZj++BhXw3erqnhRKvmFUBb9fKfVPFpAVsldk4wpkssVxYk8COC7ltI+5wu+ucO2YsMdij8vYCFiJVdZYYNijCZqkaQNjlh1Iz3y+7ZAiQ=="
+    },
+    "idp": {
+        "entityId": "https://pvi-sso.rxlogix.com/auth/realms/mydssdemo",
+        "singleSignOnService": {
+            "url": "https://pvi-sso.rxlogix.com/auth/realms/mydssdemo/protocol/saml",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "singleLogoutService": {
+            "url": "https://pvi-sso.rxlogix.com/auth/realms/mydssdemo/protocol/saml",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "x509cert": "MIICoTCCAYkCBgF7v9iBwTANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAlteWRzc2RlbW8wHhcNMjEwOTA3MTAzOTAyWhcNMzEwOTA3MTA0MDQyWjAUMRIwEAYDVQQDDAlteWRzc2RlbW8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCZitlCadEz9MNncJSif7nJpZNRqP1HccAODfSnXXO/nXSPUictoFayQaKudDpYUqSMfbZf5ObK9Mg8hBydsDjTk8RiIEIrPLTo9YUhmNb8KO2ptPImkWJ3xcoPi3KGz7AG5ZuSjjGIfw5O2diE22tw5cfZsr4yh7akuuaYUi5VJztcKGW8dVc3iH78yNku4BNStY/yeczt3QShikG+/WIS6BY6tZugSRFvBdbrQjlyzAakqTnMybp980JTlidyuXyvA8GQRvq600Xsiu9J0/yulYueTYBHnx3c2nOf7OxAC+DUR4R3lYVUhqiIgn2zB7acPPO8H6jpzqfksZvcHZTrAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAFaEEKNorUhCy7eryrCZ8jTi0/o+3h+hEFOFSxHLMYcGhkiGzVvzQa3QfX2efDCy4a1cf2oC7snwbIOPjnOMoHjZzvl2ALnakVxMIM9jkURwOjM2LMZuG4acNQYnf7mE6pqOdE3kIlfvPO0zpOHXdgy9rRo/sijA8SJeelrsL6PLfx5pGptdN/Vagq6cdnENcVkGVwpREdYm28fiprh372gBMf8GSqIvpwcKN3EuKbVg4Ui47U+3Nq7E+vgzXsgSCIDJSWLaFSgFGistOQ5Ict+xGJcXnV3oFKD+fV7D7eY5FXEoFQszYa13K91qeauRveVJ1Yx5Uh4j8DVmJxwJLcs="
+    }
+}

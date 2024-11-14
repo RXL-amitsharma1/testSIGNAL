@@ -1,0 +1,9 @@
+State,Labels,Table_labels
+yes,Yes,Yes
+no,No,No
+present,P,Present
+absent,A,Absent
+supportive,S,Supportive
+contradictive,C,Contradictive
+high,H,High
+low,L,Low

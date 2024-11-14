@@ -1,0 +1,27 @@
+node_id,node_label,description,load_process,position,effect,threshold_key,threshold_value
+prr,PRR,Input Node - provides the information if PRR statistical score exceeds the expected threshold of lower confidence interval.,AM,Terminal,Direct,prr_value,2
+ebgm,EBGM,Input Node - provides the information if EBGM (EB05) statistical score exceeds the expected threshold of lower confidence interval.,AM,Terminal,Direct,eb05_score,2
+rechallenge,RECHALLENGE,Input Node - provides information if there exist information on positive rechallenge for the reported product - event combination,AM,Terminal,Direct,,
+dechallenge,DECHALLENGE,Input Node - provides information if there exist information on positive dechallenge for the reported product - event combination,AM,Terminal,Direct,,
+evid_countries,EVIDENCE COUNTRIES,Input Node - provides information based on the count of different countries in cases contributing to a signal ,AM,Terminal,Direct,,
+evid_case_type,EVIDENCE CASE TYPE,Input Node - provides information based on the count of different case types for the product event combination.,AM,Terminal,Direct,,
+elderly,ELDERLY,Node providing information if the product - event combination contains cases with elderly patients above some specified threshold,AM,Terminal,Direct,,
+children,CHILDREN,Node providing information if the product - event combination contains cases with children above some specified threshold,AM,Terminal,Direct,,
+trend,TREND,Input Node - provides information if the trend detection algorithm detected a positive trend (increase in frequency),AM,Terminal,Direct,percent_count_incr,50
+dme,DME,Node provides information if the reactions map to the list of DMEs (Designated Medical Events),AM,Terminal,Direct,,
+ime,IME,Node provides information if the reactions map to the list of IMEs (Important Medical Events),AM,Terminal,Direct,,
+listedness,LISTEDNESS,Input Node - provides information on listedness of the reaction,AM,Terminal,Inverse,,
+severity_incr,SEVERITY INCREASE,Node providing information on increase in severity of the reaction compared to previous reporting period. It approximates severity based on changes in seriousness.,AM,Terminal,Direct,,
+time_to_onset,TIME TO ONSET,Node providing information on the temporal relationship of event,AM,Terminal,Direct,,
+pec_importance,DSS SCORE,Main outcome node providing final score for importance of the assessed product event combination,,Non_terminal,Direct,,
+bh_criteria,BH CRITERIA,Node summarizing the outcome of the reflected BH causality criteria,,Non_terminal,Direct,,
+specif_consistency,SPECIFIC CONSISTENCY,Node combining information on specificity and consistency of drug and reaction ,,Non_terminal,Direct,,
+sdr,SDR,Node providing information if the product event combination fulfils the criteria of SDR (signal of disproportional reporting),,Non_terminal,Direct,,
+strength,STRENGTH,Node sumarizing the statistical strength of the association between the drug and reported reaction,,Non_terminal,Direct,,
+bio_gradient,RE/DECHALLENGE,Node summarizing information on biological gradient (approximated by the presence of de/rechallenge information),,Non_terminal,Direct,,
+consistency,CONSISTENCY,Node summarizing information on consistency of the finding  (approximated by the presence of cases from differente countries and different case types),,Non_terminal,Direct,,
+specificity,SPECIFICITY,Summarizes the approximated sepcificity of a reaction,,Non_terminal,Direct,,
+temporality,TEMPORALITY,Node providing information on temporal relationship between drug and event: i.e. if the event can be caused by the drug given administration dates of medication,,Non_terminal,Direct,,
+special_population,SPECIAL POPULATION,Node combining information coming from nodes describing vulnerable populations: elderly and children,,Non_terminal,Direct,,
+other_factors,OTHER FACTORS,Node combining different factors having influence on the main outcome variable,,Non_terminal,Direct,,
+ror,ROR,Input Node - provides the information if ROR statistical score exceeds the expected threshold of lower confidence interval.,,,,,

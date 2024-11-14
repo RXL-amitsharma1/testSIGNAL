@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "silicon-carver-259412",
+  "private_key_id": "5a06d7b54235dc61bd253600d566d47c65fd8d18",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQClToHtAHoMcrOn\nP/b6VNcBHxsqSiUYc/2EVhh/A4BkJH40S2VFADWhLEu0Nm62IpVp36ZUWGJu+kiR\nH2JSwyMID3xDCAfjmGQtQ1vfWG0roTnIHXKzWNO2+7J69MQi+mzLJ8JrzCFf7pn0\nVYwrAcZu0XpHyHFlIspv1wqeHicZnt1nM5kBaeWJnzhgwQA8WT0EeuJ13phoGPsZ\n/twsHYIQql7j0I8MB3SzTlkca3HPNKL65dSyjRiBuTHXdiUJlF24tph3bw87Uuj1\nEILmLvLHFfKwZtO0dKzkObdOwQDwVDiOjiYuzuKtHbP4Y+LKi9gmtNWtmB0HyVU5\n0DyZKaiRAgMBAAECggEANhhrZyoFRqaQiPZjNcdmtqy9wIiT/B0VBOYBzSrRrLPO\ngwF7SenIIw6yVW6Mq1jE6Wkxbp+f0q5f6fHJxMir4ZrjsLHjlwTLH47P9VZkH2d6\n17RfUTaLzfEvFpKbztCBorfHpWwfLdwQkIcgQACsNZ6ic/Qxu4V3lsLZ7CV06Spu\nqULk0nqgWbTH73q3zrrG7cKfviMZ2qsB7Lz+9uGbaC0TfaO3OEUXocFd2oczRCa8\niwlPXklBWE4mN5jime5tGxR/cSH/R60rfGFEVtnGuayWewccOduD4KXC7g2b5R4R\n9J6Vnf+ZZgOM3ej3iGbKDN/cxAcCCeAOV/9hDJCmEwKBgQDoWZbfydP412utmirq\nfdEClVN7vAc7FiQHVvjc1AW7MKNqYbWCPgkSwCakno97llNgokevAaxgI3s3rFlj\n5Lt7+R49YzBAz0zwTh0xHqvhSoEflhREDgHL2Rq0WKUIdY96hArHClZodrvxrp8t\nea2dXiCW3sP7CGFEp0k4sY1NWwKBgQC2IfOfHPYkaZzhsIaEHg3t2p6EcfXf8iww\nJYOQG4+lw+2tXPA3iDzriKfzkPmlEouU0cPO/+i6ZxHAZd0KQh8fbl7qjOn5MGNl\n0w2w4KGgE6wOuaPpnIIyboc0tzVd1MoWz9gKqmRAfcOKKAmNwmHO52BzToeqZ823\nAsV0mX6pgwKBgDCjaHDqWAQ0XCcYKbmyoskupy40uzLEPMCIlUns3FJGKT9AuvVL\ntSyGqtA1HQYa/tMwxV6+M+5gHxAVdRTzMcgO6ySgmd5HRuza/UNmD0b3CLaq/Q0N\n/ZRFm1B7afiuW12jPHpUEKiHimpaSpoDabOSm7HZah8nruznM+25RUIXAoGAHR3O\nYZhyrR2JK/dZedOILIcvokLJqNSBRe0pXCdbzodE/tsFuAr6mjjNiL2be008rTzf\njb8RiIMjrltae+JYMWEmoV6HpQOcUFHuNWGj1QBwGCaLUrRniAJtcPr8+BQlfoIZ\nqpLU1g6E7Rg7dsMlebs5ixV50L8pfuFdiadkPVsCgYAvp6IioY6zWDOveW+hvfDl\nDoDpQcC0dWlaIjiwk/qPCFAmWlWgQQz5UQttWg0YPPNt8/yPF9rqE+qwGk7HvvVL\naX5mOhfrDL87iDUvjZfFhGF3/623zZ+ohaoCh0XeVkZs2bDpHYQBUkWgoD8jgx+h\nU5YX4UvhiXJ78oK3kJAxaQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "anamika-kumari-rxlogix-xom@silicon-carver-259412.iam.gserviceaccount.com",
+  "client_id": "107343367455020127910",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/anamika-kumari-rxlogix-xom%40silicon-carver-259412.iam.gserviceaccount.com"
+}

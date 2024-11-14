@@ -1,0 +1,916 @@
+openapi: 3.0.0
+info:
+  title: Unstructured Extraction
+  description: API for processing text narratives get entities
+  version: 1.0.0
+servers:
+  - url: /
+    description: The URL for the server where the application is currently deployed.
+  - url: "{appUrl}"
+    description: For adding Url of application server. Add url without end /
+    variables:
+      appUrl:
+        default: http://127.0.0.1:9888
+        description: url for localhost
+paths:
+  /docs:
+    get:
+      summary: Render API Documentation
+      responses:
+        '200':
+          description: API Documentation HTML page
+  /unstruct/live:
+    post:
+      summary: Process text narratives with models ang gives entities
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                language:
+                  type: string
+            examples:
+              narrative_example:
+                value:
+                  text: "Case narrative....."
+                  language: "en"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+
+components:
+  schemas:
+    ExampleResponse:
+      type: object
+      properties:
+        senderCaseUid:
+          type: integer
+        senderCaseUid_acc:
+          type: integer
+        senderCaseVersion:
+          type: string
+        senderCaseVersion_acc:
+          type: integer
+        summary:
+          type: object
+          properties:
+            caseDescription:
+              type: string
+            caseDescription_acc:
+              type: integer
+            senderComments:
+              type: string
+            senderComments_acc:
+              type: integer
+            additionalNotes:
+              type: string
+        relevantTests:
+          type: string
+        relevantTests_acc:
+          type: integer
+        receiptDate:
+          type: string
+        receiptDate_acc:
+          type: integer
+        mostRecentReceiptDate:
+          type: string
+        mostRecentReceiptDate_acc:
+          type: integer
+        reporters:
+          type: array
+          items:
+            type: object
+            properties:
+              country:
+                type: string
+              country_acc:
+                type: integer
+              country_viewid:
+                type: string
+              city:
+                type: string
+              city_acc:
+                type: integer
+              givenName:
+                type: string
+              givenName_acc:
+                type: integer
+              firstName:
+                type: string
+              firstName_acc:
+                type: integer
+              middleName:
+                type: string
+              middleName_acc:
+                type: integer
+              lastName:
+                type: string
+              lastName_acc:
+                type: integer
+              postcode:
+                type: string
+              postcode_acc:
+                type: integer
+              title:
+                type: string
+              title_acc:
+                type: integer
+              street:
+                type: string
+              street_acc:
+                type: integer
+              organization:
+                type: string
+              organization_acc:
+                type: integer
+              state:
+                type: string
+              state_acc:
+                type: integer
+              department:
+                type: string
+              department_acc:
+                type: integer
+              email:
+                type: string
+              email_acc:
+                type: integer
+              primary:
+                type: boolean
+              fax:
+                type: string
+              telephone:
+                type: string
+              qualification:
+                type: string
+              qualification_acc:
+                type: integer
+              qualification_viewid:
+                type: string
+        study:
+          type: object
+          properties:
+            additionalNotes:
+              type: string
+            caseBlindingStatus:
+              type: string
+            studyNumber:
+              type: string
+            studyNumber_viewid:
+              type: string
+            studyNumber_acc:
+              type: integer
+            studyType:
+              type: string
+            studyType_viewid:
+              type: string
+            studyType_acc:
+              type: integer
+            studyArm:
+              type: string
+        sourceType:
+          type: array
+          items:
+            type: object
+            properties:
+              additionalNotes:
+                type: string
+              value:
+                type: string
+              value_viewid:
+                type: string
+              value_acc:
+                type: integer
+        patient:
+          $ref: '#/components/schemas/Patient'
+        parent:
+          $ref: '#/components/schemas/Parent'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        productEventMatrix:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductEventMatrix'
+        seriousnesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Seriousness'
+        deathDetail:
+          $ref: '#/components/schemas/DeathDetail'
+        tests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Test'
+        literatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Literature'
+        entitylocation:
+          $ref: '#/components/schemas/EntityLocation'
+        pregnancyInformation:
+          $ref: '#/components/schemas/PregnancyInformation'
+        module_name:
+          type: string
+        model_type:
+          type: string
+        code:
+          type: integer
+        message:
+          type: string
+
+    Patient:
+      type: object
+      properties:
+        additionalNotes:
+          type: string
+        additionalRelevantMedicalHistory:
+          type: string
+        gender:
+          type: string
+        gender_acc:
+          type: integer
+        gender_viewid:
+          type: string
+        patientId:
+          type: string
+        patientId_acc:
+          type: integer
+        weight:
+          type: string
+        weight_acc:
+          type: integer
+        weight_viewid:
+          type: string
+        weightUnit:
+          type: string
+        weightUnit_acc:
+          type: integer
+        height:
+          type: string
+        height_viewid:
+          type: string
+        height_acc:
+          type: integer
+        heightUnit:
+          type: string
+        heightUnit_acc:
+          type: integer
+        pregnancy:
+          type: string
+        pregnancy_viewid:
+          type: string
+        patientDob:
+          type: string
+        patientDob_acc:
+          type: integer
+        name:
+          type: string
+        name_acc:
+          type: integer
+        age:
+          type: object
+          properties:
+            inputValue:
+              type: string
+            inputValue_viewid:
+              type: string
+            inputValue_acc:
+              type: integer
+            ageType:
+              type: string
+        medicalHistories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedicalHistory'
+        pastDrugHistories:
+          type: array
+          items:
+            $ref: '#/components/schemas/PastDrugHistory'
+
+    Parent:
+      type: object
+      properties:
+        additionalNotes:
+          type: string
+        additionalRelevantMedicalHistory:
+          type: string
+        gender:
+          type: string
+        gender_acc:
+          type: integer
+        gender_viewid:
+          type: string
+        patientId:
+          type: string
+        patientId_acc:
+          type: integer
+        weight:
+          type: string
+        weight_acc:
+          type: integer
+        weight_viewid:
+          type: string
+        weightUnit:
+          type: string
+        weightUnit_acc:
+          type: integer
+        height:
+          type: string
+        height_viewid:
+          type: string
+        height_acc:
+          type: integer
+        heightUnit:
+          type: string
+        heightUnit_acc:
+          type: integer
+        breastFeeding:
+          type: string
+        pregnancy:
+          type: string
+        pregnancy_viewid:
+          type: string
+        name:
+          type: string
+        name_acc:
+          type: integer
+        parentDob:
+          type: string
+        parentDob_acc:
+          type: integer
+        age:
+          type: object
+          properties:
+            inputValue:
+              type: string
+            inputValue_viewid:
+              type: string
+            inputValue_acc:
+              type: integer
+            ageType:
+              type: string
+        medicalHistories:
+          type: array
+          items:
+            $ref: '#/components/schemas/MedicalHistory'
+        pastDrugHistories:
+          type: array
+          items:
+            $ref: '#/components/schemas/PastDrugHistory'
+
+    Event:
+      type: object
+      properties:
+        seq_num:
+          type: integer
+        additionalNotes:
+          type: string
+        country:
+          type: string
+        country_acc:
+          type: integer
+        country_viewid:
+          type: string
+        reactionCoded:
+          type: string
+        reactionCoded_viewid:
+            type: string
+        reactionCoded_acc:
+          type: integer
+        reportedReaction:
+          type: string
+        reportedReaction_viewid:
+          type: string
+        reportedReaction_acc:
+          type: integer
+        medicallyConfirmed:
+          type: string
+        medicallyConfirmed_acc:
+          type: integer
+        startDate:
+          type: string
+        startDate_acc:
+          type: integer
+        endDate:
+          type: string
+        endDate_acc:
+          type: integer
+        seriousnesses:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              value_viewid:
+                type: string
+              value_acc:
+                type: integer
+        outcome:
+          type: string
+        outcome_viewid:
+          type: string
+        outcome_acc:
+          type: integer
+
+    Product:
+      type: object
+      properties:
+        seq_num:
+          type: string
+        additionalNotes:
+          type: string
+        studyProduct:
+          type: string
+        license_value:
+          type: string
+        license_value_viewid:
+          type: string
+        license_value_acc:
+          type: integer
+        nameParts:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamePart'
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+        product_type:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductType'
+        dosageForm_value:
+          type: string
+        dosageForm_value_acc:
+          type: integer
+        dosageForm_value_viewid:
+          type: string
+        concentration:
+          type: array
+          items:
+            $ref: '#/components/schemas/Concentration'
+        indications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Indication'
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        role_value:
+          type: string
+        doseInformations:
+          type: array
+          items:
+            $ref: '#/components/schemas/DoseInformation'
+        actionTaken:
+          type: object
+          properties:
+            value:
+              type: string
+            value_acc:
+              type: integer
+        additionalDrugInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalDrugInfo'
+        implantDate:
+          type: string
+        explantDate:
+          type: string
+        blinded:
+          type: string
+
+    ProductEventMatrix:
+      type: object
+      properties:
+        product_seq_num:
+          type: string
+        product_seq_num_acc:
+          type: integer
+        event_seq_num:
+          type: string
+        event_seq_num_acc:
+          type: integer
+        rechallenge:
+          type: object
+          properties:
+            value:
+              type: string
+            value_acc:
+              type: integer
+        dechallenge:
+          type: object
+          properties:
+            value:
+              type: string
+            value_acc:
+              type: integer
+        relatednessAssessments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatednessAssessment'
+
+    Seriousness:
+      type: object
+      properties:
+        value:
+          type: string
+        value_acc:
+          type: integer
+
+    DeathDetail:
+      type: object
+      properties:
+        additionalNotes:
+          type: string
+        deathDate:
+          type: object
+          properties:
+            date:
+              type: string
+            date_acc:
+              type: integer
+        autopsyDone:
+          type: string
+        autopsyDone_acc:
+          type: integer
+        deathCauses:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeathCause'
+
+    Test:
+      type: object
+      properties:
+        seq_num:
+          type: integer
+        startDate:
+          type: string
+        testName:
+          type: string
+        testName_acc:
+          type: integer
+        testName_viewid:
+          type: string
+        testAssessment:
+          type: string
+        testNotes:
+          type: string
+        testResult:
+          type: string
+        testResultUnit:
+          type: string
+        testHigh:
+          type: string
+        testLow:
+          type: string
+
+    Literature:
+      type: object
+      properties:
+        author:
+          type: string
+        title:
+          type: string
+        journal:
+          type: string
+        vol:
+          type: string
+        year:
+          type: string
+        pages:
+          type: string
+
+    EntityLocation:
+      type: object
+      properties:
+        entities:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Entity'
+        sentences:
+          type: object
+          additionalProperties:
+            type: string
+
+    PregnancyInformation:
+      type: object
+      properties:
+        noOfFetus:
+          type: string
+        gravida:
+          type: string
+        para:
+          type: string
+        retrospectiveProspective:
+          type: string
+        gestatioPeriod:
+          type: string
+        dueDate:
+          type: string
+        neonates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Neonate'
+
+    MedicalHistory:
+      type: object
+      properties:
+        additionalNotes:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        historyConditionType:
+          type: string
+        reportedReaction:
+          type: string
+        reactionCoded:
+          type: string
+        historyNote:
+          type: string
+        continuing:
+          type: string
+
+    PastDrugHistory:
+      type: object
+      properties:
+        additionalNotes:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        historyConditionType:
+          type: string
+        drugName:
+          type: string
+        drugNameCoded:
+          type: string
+        historyNote:
+          type: string
+        continuing:
+          type: string
+        nameParts:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamePart'
+        substances:
+          type: array
+          items:
+            $ref: '#/components/schemas/Substances'
+        drugIndication:
+          type: array
+          items:
+            type: object
+            properties:
+              reportedReaction:
+                type: string
+              reactionCoded:
+                type: string
+        drugReaction:
+          type: array
+          items:
+            type: object
+            properties:
+              reportedReaction:
+                type: string
+              reactionCoded:
+                type: string
+
+    NamePart:
+      type: object
+      properties:
+        seqNum:
+          type: integer
+        deleted:
+          type: string
+        internalRowId:
+          type: string
+        partType:
+          type: string
+        partName:
+          type: string
+        customProperty:
+          type: string
+
+    Substances:
+      type: object
+      properties:
+        seqNum:
+          type: integer
+        deleted:
+          type: string
+        internalRowId:
+          type: string
+        name:
+          type: string
+        strength:
+          type: string
+        customProperty:
+          type: string
+
+    Ingredient:
+      type: object
+      properties:
+        value:
+          type: string
+        value_acc:
+          type: integer
+        value_viewid:
+          type: string
+        strength:
+          type: string
+        strength_acc:
+          type: integer
+        unit:
+          type: string
+        unit_acc:
+          type: integer
+
+    ProductType:
+      type: object
+      properties:
+        value:
+          type: string
+        value_acc:
+          type: integer
+
+    Concentration:
+      type: object
+      properties:
+        value:
+          type: string
+        value_acc:
+          type: integer
+        unit:
+          type: string
+        unit_acc:
+          type: integer
+
+    Indication:
+      type: object
+      properties:
+        reportedReaction:
+          type: string
+        reportedReaction_acc:
+          type: integer
+        reactionCoded:
+          type: string
+        reactionCoded_acc:
+          type: integer
+
+    Device:
+      type: object
+      properties:
+        malfunctions:
+          type: string
+
+    DoseInformation:
+      type: object
+      properties:
+        dose_inputValue:
+          type: string
+        dose_inputValue_acc:
+          type: integer
+        dose_inputValue_viewid:
+          type: string
+        frequency_value:
+          type: string
+        frequency_value_acc:
+          type: integer
+        frequency_value_viewid:
+          type: string
+        duration:
+          type: string
+        duration_acc:
+          type: integer
+        route_value:
+          type: string
+        route_value_viewid:
+          type: string
+        route_value_acc:
+          type: integer
+        customProperty_batchNumber_value:
+          type: string
+        customProperty_batchNumber_value_acc:
+          type: integer
+        customProperty_expiryDate:
+          type: string
+        customProperty_expiryDate_acc:
+          type: integer
+        endDate_acc:
+          type: integer
+        endDate:
+          type: string
+        startDate:
+          type: string
+        startDate_acc:
+          type: integer
+        description:
+          type: string
+        description_acc:
+          type: integer
+
+    AdditionalDrugInfo:
+      type: object
+      properties:
+        value:
+          type: string
+
+    RelatednessAssessment:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            value:
+              type: string
+            value_acc:
+              type: integer
+
+    Entity:
+      type: object
+      properties:
+        entity_label:
+          type: string
+        entity_text:
+          type: string
+        sent_id:
+          type: string
+        start:
+          type: string
+        end:
+          type: string
+
+    DeathCause:
+      type: object
+      properties:
+        causeType:
+          type: string
+        reportedReaction:
+          type: string
+        reportedReaction_acc:
+          type: integer
+
+    Neonate:
+      type: object
+      properties:
+        pregnancyOutcome:
+          type: string
+        fetalOutcome:
+          type: string
+        deliveryType:
+          type: string
+        birthWeight:
+          type: string
+        gestAgeAtPregOutcome:
+          type: string
+        pregnancyNotes:
+          type: string
+        pregnancyOutcomeDate:
+          type: string
+        apgarScores:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApgarScore'
+
+    ApgarScore:
+      type: object
+      properties:
+        type:
+          type: object
+          properties:
+            value:
+              type: string
+            value_acc:
+              type: integer
+        score:
+          type: string

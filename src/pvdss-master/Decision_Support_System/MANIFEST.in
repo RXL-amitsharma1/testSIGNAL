@@ -1,0 +1,9 @@
+include DSS/tests/*.txt
+include DSS/tests/*.csv
+recursive-include static *
+recursive-include DSS/static *
+recursive-include DSS/migrations *
+recursive-include DSS/templates *
+
+exclude DSS/*.c
+exclude DSS/test/*.c

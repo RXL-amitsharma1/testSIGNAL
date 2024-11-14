@@ -1,0 +1,457 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Tab title -->
+	<title> Decision Support System </title>
+	<link rel="shortcut icon" href="{%  static 'DSS/images/favicon.ico' %}">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- for header -->
+	<link  rel="stylesheet" href={% static 'DSS/css/style.css' %}>
+	<link  rel="stylesheet" href={% static 'DSS/css/bootstrap.css' %}>
+
+	<!-- Bootstrap core JavaScript-->
+	<script type="text/javascript" src={% static 'DSS/js/jquery.min.js' %}></script>
+	<script type="text/javascript" src={% static 'DSS/js/bootstrap.bundle.min.js' %}></script>
+	<script type="text/javascript" src={% static 'DSS/js/sb-admin-2.js' %}></script>
+
+	<!--css files-->
+	<link rel="stylesheet" type="text/css" href={% static 'DSS/css/extra.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'DSS/css/main.css' %}>
+	
+
+	<!-- files to render datatable -->
+	<link  rel="stylesheet" href={% static 'DSS/css/pvs_app.css' %}>
+	<script type="text/javascript" src={% static 'DSS/js/jquery.dataTables.min.js' %}></script>
+	<script type="text/javascript" src={% static 'DSS/js/dataTables.bootstrap.min.js' %}></script>
+
+	<!-- vis.js for network display -->
+	<script type="text/javascript" src={% static 'DSS/js/vis-network.min.js' %}></script>
+
+	<!-- select2 drop down -->
+	<link rel ="stylesheet" href={% static 'DSS/css/select2.min.css' %}>
+	<script type="text/javascript" src={% static 'DSS/js/select2.min.js' %}></script>
+
+	<!-- javascript code for web flow-->
+	<script type="text/javascript" src={% static 'DSS/js/main.js' %}></script>
+	<script type="text/javascript" src={% static 'DSS/js/html2pdf.js' %}></script>
+
+	<link  rel="stylesheet" href={% static 'DSS/css/check_box.css' %}>
+	<link  rel="stylesheet" href={% static 'DSS/css/mdi_fonts/mdi.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'DSS/css/font-awesome/css/font-awesome.min.css' %} >
+	<script type="text/javascript" src={% static 'DSS/js/bootstrap.min.js' %}></script>
+	
+	<script type="text/javascript">
+		
+		$(window).on('load resize', function(){
+   			 $('#table .dataTables_scrollBody').height($(this).height()-288);
+    		 $('#activities .dataTables_scrollBody').height($(this).height()-288);
+    		 $('#network_structure ').height($(this).height()-280);
+    		 redrawAll();//draw network
+		});
+	
+	</script>
+	
+</head>
+
+<body onload=initialize_node_table()>
+
+	<!-- Ajax loader -->
+	<div id="divLoading" style="display: none">	</div>
+
+	<!-- Review/Confirmation Modal -->
+	<div class="modal fade" id="review_modal" role="dialog"  tabindex="-1" aria-hidden="true" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class=" panelDivHeader">
+			  <label>Review</label>
+			  <button type="button" id = 'review_modal_close' class="close" data-dismiss="modal">&times;</button>
+			  
+			</div>
+			<form id = "dss_review_form" action = '/dss_review/' method = 'post'>
+			    <div class="modal-body">
+			    	<!-- Confirm checkbox -->
+			  		<div class = 'confirm_block'>
+			      		<table class="table" style="width: 40%;">
+							<colgroup><col width="10">
+							<col width="10">
+							<col width="10">
+							</colgroup>
+							<tbody >
+								<tr>
+								<td>
+									<label>Confirm&nbsp;: </label>
+								</td>
+								<td>
+									<div class="checkbox-custom">
+										<input type="checkbox" class="form-check-input" value="yes" name="confirm" style="cursor:pointer">
+										<label>Yes</label>
+									</div>
+								</td>
+								<td>
+									<div class="checkbox-custom">
+										<input type="checkbox" class="form-check-input" value="no" name="confirm" style="cursor:pointer">
+										<label>No</label>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div>
+						<label>Comments&nbsp;:</label>
+						<textarea id="review_comment" maxlength = "4000" rows="4" style="width: 100%;resize: none;border-radius: 2px;"></textarea>
+					</div>
+			    </div>
+			    <div class="modal-footer">
+			      <button type="button" onclick="review_storage()" class="application_button"  style="outline: none !important;" data-dismiss="modal">Save</button>
+			    </div>
+			</form>
+		</div>
+
+	</div>
+	</div>
+
+
+
+	<!-- PEC_IMPORTANCE CLICK RATIONALE Modal -->
+	<!-- On clicking pec_importance node, below label click event is called -->
+	<label id ='rationale_modal_click' style="cursor:pointer; display: none" data-toggle="modal" data-target="#rationale_modal">Dummy click</label>
+
+	<div class="modal fade" id="rationale_modal" role="dialog"  tabindex="-1" aria-hidden="true" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" style="max-width: 80%">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class=" panelDivHeader">
+			  <label>DSS DETAILS</label>
+			  <button type="button" id = 'rationale_modal_close' class="close" data-dismiss="modal">&times;</button>
+			  
+			</div>
+			
+			<!--
+			<div id = "rationale_table" style = "margin:10px">
+			</div>
+			-->
+			<div class="modal-body">
+				<!-- tabs-->
+				<div style="margin: 20px">
+					<div class="tab">
+						<button  id = 'default_rationale_tab' class="modal_tablinks" onclick="open_modal_tab(event, 'rationale_tab_content')">RATIONALE</button>
+						<button class="modal_tablinks" onclick="open_modal_tab(event, 'review_history_tab_content')">DETAILED HISTORY</button>
+					</div>
+
+
+					<div id = "rationale_tab_content" class = "modal_tabcontent" >
+						
+					</div>
+					<div id = "review_history_tab_content" class = "modal_tabcontent">
+						
+					</div>
+				</div>
+
+				<div class = 'modal_details'>
+					<label>Current Period&nbsp;: </label>
+					<label id = "modal_period_label" style="display: inline"> </label>
+					<label>&nbsp; &nbsp;  &nbsp;PECs in Current Period &nbsp;: </label>
+					<label id = "case_count" style="display: inline"> </label>
+					<label>&nbsp; &nbsp;  &nbsp;Confidence in Potential Signal &nbsp;: </label>
+					<label id = "pec_high" style="display: inline"> </label>
+					
+				</div>
+			</div>
+
+			<div class="modal-footer">
+			      <button type="button" class="application_close_button"  style="outline: none !important;" data-dismiss="modal">Close</button>
+			</div>
+									
+		</div>
+
+	</div>
+	</div>
+
+	<div class= "container-fluid">
+
+
+
+       	<!-- Main body starts -->
+		<div class = "row">
+
+
+			<!-- left side panel -->
+			<div class = "col-sm-3">
+
+								
+				<div class="main_div_test ">
+
+						<!-- Query variables widget -->
+						<div class = "panelDivHeader" id = 'query_variables_clickable'>
+							<div class ="up_arrow_img" id = "query_variables_arrow">
+								<label style="cursor:pointer; margin-left: 15px"> Review </label>
+							</div>
+						</div>
+						<div class = "panelDivBody form-group" id = "query_variables_block" style="margin-bottom: 0px;">
+							<label>Product&nbsp;:</label>
+							<label id = "product_id"  style="display: inline"> </label>
+							<br>
+							<label>Event  &nbsp;&nbsp;&nbsp;&nbsp;:</label>
+							<label id ="event_id"  style="display: inline"> </label>
+							<br>
+							<label>Period  &nbsp;&nbsp;&nbsp;:</label>
+							<label id ="period_id"  style="display: inline"> </label>
+							<hr style = "margin:7px">
+							<label>DSS Proposal &nbsp;:</label>
+							<label id ="recommendation_id"  style="display: inline"> </label>
+
+							<!-- Confirm checkbox -->
+							<div class = 'confirm_block'>
+								<table class="table" id="review_confirm_table" style="white-space: inherit !important; width: 70%;">
+									<colgroup><col width="30">
+									<col width="30">
+									<col width="30">
+									</colgroup>
+									<tbody id="review_confirm_table">
+										<tr>
+										<td>
+											<label style="cursor:pointer" data-toggle="modal" data-target="#review_modal">Confirm&nbsp;:</label>
+										</td>
+										<td>
+											<div class="checkbox-custom">
+												<input type="checkbox" class="form-check-input" value="yes" name="confirm" style="cursor:pointer" data-toggle="modal" data-target="#review_modal" >
+												<label>Yes</label>
+											</div>
+										</td>
+										<td>
+											<div class="checkbox-custom">
+												<input type="checkbox" class="form-check-input" value="no" name="confirm" style="cursor:pointer" data-toggle="modal" data-target="#review_modal" >
+												<label>No</label>
+											</div>
+										</td>
+										</tr>
+									</tbody>
+								</table>							
+							</div>
+							<hr style = "margin:7px">
+							<!--			
+							<label > Select Query Variable </label>
+							<br>
+							<select id="query_dropdown_id" ></select>			
+							-->
+							<label style ="padding-top:7px"> Select Alert Periods </label>
+							<br>
+							<select id="alert_period">
+							</select>			
+						</div>
+					
+
+				
+						<!-- Evidence Selection form -->
+						<div class = "panelDivHeader" id = 'form_clickable' style="margin-top: 7px"> 
+							<div class ="down_arrow_img" id = "form_arrow">
+								<label style="cursor:pointer !important; margin-left: 15px"> Evidence Selection</label>
+							</div>
+						</div>
+						<div  class = "panelDivBody form-group ScrollStyle" id = "form_block" style="margin-bottom: 0px; display: none; overflow-y: auto;  ">
+							<form id = "manual_node_form" action = '/manual_node/' method = 'post'>
+								<table class="table" id = 'form_table' style="white-space: inherit !important;">
+								<col width="100">
+	  							<col width="30">
+	  							<col width="30">
+	  							
+
+
+								</table>
+								<div style="width: 100%" align="right">
+								<input id = "submit_button" type="submit" class="application_button" value="Submit" >
+								</div>
+							
+
+							</form>	
+
+						</div>
+					
+				
+
+					<!-- Details tab, which would open on node click to display details -->
+					
+					<div  id = "details_block_1" class = "panelDivHeader" style="margin-top:7px; display: none; "> <label> Node Details </label> </div>
+					<div id = "details_block_2" class = "panelDivBody form-group" style="margin-bottom: 0px; overflow-y: auto; display: none;">
+						<label>Node&nbsp;: </label>
+							<p id = "name_id" style="display: inline"></p>
+						<br>
+						<label>Description&nbsp;: </label>
+							<p id = "description_id" style="display: inline"> </p>
+						<br>
+						
+						<label id = 'value_label_id'><hr style = "margin:5px">Value&nbsp;: </label><p id ="value_id" style="display: inline"> </p>					
+						
+					</div>
+				
+				
+				</div>
+				
+			</div>
+
+
+
+
+			<!-- main panel -->
+			<div class = "col-sm-9 mainPanel">
+				
+				
+										
+					<!--Tabs - Network Stucture and Result table -->
+					<div class="tab">
+						<button id = "default_network" class="tablinks" onclick="open_tab(event, 'network')">Network Structure</button>
+						<button class="tablinks" onclick="open_tab(event, 'table')">DSS Result Table</button>
+						<button class="tablinks" onclick="open_tab(event, 'activities')">ACTIVITIES</button>
+
+						<a id = "export_button" class="mdi mdi-export blue-1 font-24" data-toggle="tooltip" 
+						title="Export"
+						style="cursor: pointer; float: right; margin-right: 5px"></a>
+					</div>
+
+
+					<!-- Network panel - would be rendered using script -->
+					<div id = "network" class = "tabcontent">
+						<div class="row">
+	                    	<div class="col-sm-10">
+
+								<div id="network_structure"  style="width: 100%"></div>
+
+							</div>
+							<!-- Network Legend -->
+							<div class="col-md-2" style = "padding-left:0px; padding-right: 0px">
+								<!-- network_legend id is provided, while exporting to pdf -->
+								<div class="row" id = 'network_legend'>
+	                    			<div class="col-sm-12" style="display:inline; margin-bottom: 6px">
+		                    			<div >
+		                    				<div style="background-color:#FC8D92;height:16px;width:16px;border-radius:50%;float:left">
+		                    				</div>
+		                    			</div>
+		                    			<div >                   
+		                    			&nbsp <label style="font-size: 12px">Supportive evidence</label>
+		                    			</div>
+	                    			</div>
+	                   				
+	                    			<div class="col-sm-12" style="display:inline; margin-bottom: 6px">
+					                    <div >
+						                    <div style="background-color:#82FF9C;height:16px;width:16px;border-radius:50%;float:left">
+						                    </div>
+						                </div>
+					                    <div >   
+					                    &nbsp <label style="font-size: 12px">Contradictive evidence</label>
+					                    </div>
+					                </div>
+					                <div class="col-sm-12" style="display:inline; margin-bottom: 6px">
+					                    <div >
+						                    <div style="background-color:#ffff6e;height:16px;width:16px;border-radius:50%;float:left">
+						                    </div>
+						                </div>
+					                    <div >   
+					                    &nbsp <label style="font-size: 12px">
+					                     {{ node_label_dict|get_item:"pec_importance"}}</label>
+					                    </div>
+					                </div>
+					                <div class="col-sm-12" style="display:inline; margin-bottom: 6px">
+					                    <div >
+						                    <div style="background-color:#d4e9ef;height:16px;width:16px;border-radius:50%;float:left">
+						                    </div>
+						                </div>
+					                    <div >   
+					                    &nbsp <label style="font-size: 12px">Intermediate Nodes</label>
+					                    </div>
+					                </div>
+                    			
+                   
+			                   	
+			                    
+                    				<div class="col-md-12" style="padding-left: 5px; margin-bottom: 6px"><label style="font-size: 12px">H :&nbsp High</label></div>
+                    				<div class="col-md-12" style="padding-left: 5px;margin-bottom: 6px"><label style="font-size: 12px">S :&nbsp Supportive</label></div>
+                    			</div>
+										
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="tab"  id = "intermediate_scores" > 
+									<button id = "Intermediate_scores_button" class="intermediate_button">Intermediate Scores</button>
+								</div>
+								
+								<div id = 'score_table_div' style="width:100%;"></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Result table displayed using dataTable -->
+					<div id="table" class="tabcontent"></div>
+					<!-- Activity tab showing activties performed in dataTable format -->
+					<div id="activities" class="tabcontent"></div>
+
+				</div>
+
+			</div>
+			
+		</div>
+		
+	</div>
+	<script type="text/javascript">
+		//Initializing context variables
+		var alert_id = {{ alert_id|safe }};
+		var archived = {{ archived|safe }};
+		var node_description_dict={{ node_description_dict|safe }};
+		var node_effect={{ node_effect_dict|safe }};
+		var threshold_details={{ threshold_details|safe }};
+		var rationale_order_dict={{ rationale_order_dict|safe }};
+		var rationale_parent_dict={{ rationale_parent_dict|safe }};
+		var rationale_threshold_dict = {{ rationale_threshold_dict|safe }};
+		var rationale_text_potential_yes = {{ rationale_text_potential_yes|safe }};
+		var rationale_text_potential_no = {{ rationale_text_potential_no|safe }};
+		var threshold_details={{ threshold_details|safe }};
+		var severity_rationale_dict={{ severity_rationale_dict|safe }};
+		var dss_threshold_dict={{ dss_threshold_dict|safe }};
+		
+
+		var boolean_severity={{ boolean_severity|safe }};
+		var percent_severity={{ percent_severity|safe }};
+		var severity_incr_threshold={{ severity_incr_threshold|safe }};
+		
+		var node_label_dict={{ node_label_dict|safe }};
+		var state_label_dict={{ state_label_dict|safe }};
+		var table_label_dict={{ table_label_dict|safe }};
+		var state_dict = {{ state_dict|safe }};
+
+		var terminal_nodes = {{ terminal_nodes|safe }};
+		var manual_nodes = {{ manual_nodes|safe }};
+		var non_terminal_nodes = {{ non_terminal_nodes|safe }};
+
+		var selected_period = {{ selected_period|safe }};  
+		var result_table_header = ["Product Name","Event","DSS SCORE %"].concat(terminal_nodes);
+		//default node selected in dropdown
+		var selected_nodes=["pec_importance"];
+		// Variables for network
+		//create an array with nodes and edges
+		var nodes = new vis.DataSet({{ nodes|safe }});
+		var edges = new vis.DataSet({{ edges|safe }});
+		var selected_record ={{ selected_record|safe }};
+		var json_records_keys = Object.keys(selected_record);
+
+		var comment = "{{ comment|safe }}";
+		var confirm = "{{ confirm|safe }}";
+
+		var common_name = "{{ common_name|safe }}";
+	
+	</script>
+
+</body>
+</html>

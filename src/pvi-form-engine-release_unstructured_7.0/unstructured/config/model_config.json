@@ -1,0 +1,154 @@
+{
+  "spacy": {
+    "switch": true,
+    "negation-switch": true,
+    "models": [
+      {
+        "death-details-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "event-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "parent-annot-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "lab-hosp-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "med-hist-dates-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "med-hist-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "onset-negated-debiased-spancat": {
+          "switch": false,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "prod-detail-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "prod-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "reporter-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "source-study-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "study-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      },
+      {
+        "patient-all-v2-negated-debiased-spancat": {
+          "switch": true,
+          "avg_f1_score": ""
+        }
+      }
+    ]
+  },
+  "semantic_model_path": "semantic_models/multilingual-e5-base",
+  "bert": {
+    "switch": true,
+    "negation-switch": true,
+    "base_biobert_path": "bert_models/biobert_v1.1_pubmed",
+    "models": [
+      {
+        "death_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "event_model_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "event_parent_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "final_prod_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "formulation_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "height_weight_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "lab_hosp_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "medical_hist_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "patient_detail_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      },
+      {
+        "rep_model_debiased": {
+          "switch": true,
+          "metadata": "meta.bin"
+        }
+      }
+    ]
+  }
+}

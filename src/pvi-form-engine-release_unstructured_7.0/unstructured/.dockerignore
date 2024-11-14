@@ -1,0 +1,4 @@
+models/
+logs/*
+**_env/*
+**/__pycache__/**

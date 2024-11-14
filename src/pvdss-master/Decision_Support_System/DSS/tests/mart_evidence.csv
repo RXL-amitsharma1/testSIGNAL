@@ -1,0 +1,15 @@
+"BASE_ID","MEDDRA_PT_CODE","CNT_COUNTRY","EVID_COUNTRIES","CNT_SOURCE_TYPE","EVID_CASE_TYPE","IME","DME","CNT_CHILD","CHILDREN","CNT_ELDERLY","ELDERLY","CNT_RECHAL","CNT_DECHAL","RECHALLENGE","DECHALLENGE","CNT_TTO","TIME_TO_ONSET","SEVERITY_INCR","NEW_SERIOUS","NEW_SERIOUS_DEATH","NEW_SERIOUS_THREAT","NEW_SERIOUS_MED_IMP","NEW_SERIOUS_INT_REQ","NEW_SERIOUS_HOSP","NEW_SERIOUS_PRLG_HOST","NEW_SERIOUS_DISBALE","NEW_SERIOUS_CONG_ANOM","PERCENT_SERIOUS","PERCENT_SERIOUS_DEATH","PERCENT_SERIOUS_THREAT","PERCENT_SERIOUS_MED_IMP","PERCENT_SERIOUS_INT_REQ","PERCENT_SERIOUS_HOSP","PERCENT_SERIOUS_PRLG_HOST","PERCENT_SERIOUS_DISBALE","PERCENT_SERIOUS_CONG_ANOM"
+100022,10002515,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10033371,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10028651,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10020772,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10028810,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10047700,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10037844,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10028980,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10003119,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10020741,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10028813,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10045275,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10037660,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10
+100022,10025487,3,"yes",3,"yes","yes","yes",5,"yes",5,"yes",3,4,"yes","yes",3,"yes","yes",1,0,1,0,1,0,1,1,0,60,70,41,30,21,60,71,81,10

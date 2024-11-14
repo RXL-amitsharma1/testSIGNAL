@@ -1,0 +1,25 @@
+node_id,order,parent,potential_threshold,rationale_text_potential_yes,rationale_text_potential_no
+listedness,1,,,PT not listed,PT listed
+sdr,2,,50.01,SDR detected,SDR not detected
+prr,3,sdr,,"PRR : =prr_value, PRR05: =prr05_score, PRR95: =prr95_score","PRR : =prr_value, PRR05: =prr05_score, PRR95: =prr95_score"
+ebgm,4,sdr,,"EBGM : =ebgm_score, EB05: =eb05_score, EB95: =eb95_score","EBGM : =ebgm_score, EB05: =eb05_score, EB95: =eb95_score"
+severity_incr,5,,,Change in severity observed,Change in severity not observed
+bio_gradient,6,,50.01,Positive Dechallenge or Rechallenge cases exist,Positive Dechallenge or Rechallenge cases do not exist
+rechallenge,7,bio_gradient,,# of Cases with Positive Rechallenge: =cnt_rechal,# of Cases with Positive Rechallenge: =cnt_rechal
+dechallenge,8,bio_gradient,,# of Cases with Positive Dechallenge: =cnt_dechal,# of Cases with Positive Dechallenge: =cnt_dechal
+trend,9,,,"Trend changes observed
+New serious case count: =new_serious_count, Previous period serious case count: =prev_serious_count 
+Current EB05: =eb05_score, Previous EB05: =prev_eb05_score","Trend changes not observed
+New serious case count: =new_serious_count, Previous period serious case count: =prev_serious_count 
+Current EB05: =eb05_score, Previous EB05: =prev_eb05_score"
+consistency,10,,50.01,Consistent evidence for relationship found,Consistent evidence for relationship not found
+evid_countries,11,consistency,,Countries involved: =cnt_country,Countries involved: =cnt_country
+evid_case_type,12,consistency,,Case type contributing to PEC : =cnt_source_type,Case type contributing to PEC : =cnt_source_type
+specificity,13,,50.01,Specific matches for event found,Specific matches for event not found
+dme,14,specificity,,Positive DME match,Negative DME match
+temporality,15,,50.01,Compliant  temporal relationship found,Compliant  temporal relationship not found
+time_to_onset,16,temporality,,Temporal relationship found in =cnt_tto cases,Temporal relationship found in =cnt_tto cases
+special_population,17,,50.01,Vulnerable populations found,No vulnerable populations found
+elderly,18,special_population,,Cases with elderly patients involved: =cnt_elderly,Cases with elderly patients involved: =cnt_elderly
+children,19,special_population,,Cases with children involved: =cnt_child,Cases with children involved: =cnt_child
+ime,20,,,Positive IME match,Negative IME match

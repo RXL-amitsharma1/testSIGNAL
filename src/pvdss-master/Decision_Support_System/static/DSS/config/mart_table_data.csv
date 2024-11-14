@@ -1,0 +1,18 @@
+Table,columns,alias
+DSS_COUNTRY_DATA_alert_id,"NVL(country.cnt_country,0) as cnt_country",country
+DSS_COUNTRY_DATA_BOOL_alert_id,"NVL(country_bool.bool_val_country,'no') as evid_countries",country_bool
+DSS_CT_DATA_alert_id,"NVL(type.cnt_source_type,0) as cnt_source_type",type
+DSS_CT_DATA_BOOL_alert_id,"NVL(type_bool.bool_val_source_type,'no') as evid_case_type",type_bool
+DSS_IME_DATA_BOOL_alert_id,"NVL(ime_t.bool_val_ime,'no') as ime",ime_t
+DSS_DME_DATA_BOOL_alert_id,"NVL(dme_t.bool_val_dme,'no') as dme",dme_t
+DSS_CHILD_DATA_alert_id,"NVL(child.cnt_child,0) as cnt_child",child
+DSS_CHILD_DATA_BOOL_alert_id,"NVL(child_bool.bool_val_child,'no') as children",child_bool
+DSS_ELDERLY_DATA_alert_id,"NVL(elderly.cnt_elderly,0) as cnt_elderly",elderly
+DSS_ELDERLY_DATA_BOOL_alert_id,"NVL(elderly_bool.bool_val_elderly,'no') as elderly",elderly_bool
+DSS_RE_DE_DATA_alert_id,"NVL(rd_challenge.cnt_rechal,0) as cnt_rechal, NVL(rd_challenge.cnt_dechal,0) as cnt_dechal",rd_challenge
+DSS_RE_DE_DATA_BOOL_alert_id,"NVL(rd_challenge_bool.bool_val_rechal,'no') as rechallenge , NVL(rd_challenge_bool.bool_val_dechal,'no') as dechallenge",rd_challenge_bool
+dss_tto_cnt_alert_id,"NVL(tto.cnt_tto,0) as cnt_tto",tto
+dss_tto_cnt_bool_alert_id,"NVL(tto_bool.bool_val_tto,'no') as time_to_onset ",tto_bool
+DSS_SEV_DATA_BOOL_alert_id,"NVL(sevr_bool.bool_val_sev,'no') as severity_incr",sevr_bool
+DSS_SEV_INCR_DATA_1_alert_id,"NVL(sev_table1.FLG_SERIOUS,0) as new_serious , NVL(sev_table1.FLAG_SERIOUS_DEATH,0) as new_serious_death , NVL(sev_table1.FLAG_SERIOUS_THREAT,0) as new_serious_threat , NVL(sev_table1.FLAG_SERIOUS_OTHER_MED_IMP,0) as new_serious_med_imp , NVL(sev_table1.FLAG_SERIOUS_INT_REQ,0) as new_serious_int_req , NVL(sev_table1.FLAG_SERIOUS_HOSP,0) as new_serious_hosp , NVL(sev_table1.FLAG_SERIOUS_PRLNG_HSPTALIZED,0) as new_serious_prlg_host , NVL(sev_table1.FLAG_SERIOUS_DISABLE,0) as new_serious_disbale , NVL(sev_table1.FLAG_SERIOUS_CONG_ANOM,0) as new_serious_cong_anom",sev_table1
+DSS_SEV_INCR_DATA_2_alert_id,"NVL(sev_table2.FLG_SERIOUS,0) as percent_serious , NVL(sev_table2.FLAG_SERIOUS_DEATH,0) as percent_serious_death , NVL(sev_table2.FLAG_SERIOUS_THREAT,0) as percent_serious_threat , NVL(sev_table2.FLAG_SERIOUS_OTHER_MED_IMP,0) as percent_serious_med_imp , NVL(sev_table2.FLAG_SERIOUS_INT_REQ,0) as percent_serious_int_req , NVL(sev_table2.FLAG_SERIOUS_HOSP,0) as percent_serious_hosp , NVL(sev_table2.FLAG_SERIOUS_PRLNG_HSPTALIZED,0) as percent_serious_prlg_host , NVL(sev_table2.FLAG_SERIOUS_DISABLE,0) as percent_serious_disbale , NVL(sev_table2.FLAG_SERIOUS_CONG_ANOM,0) as percent_serious_cong_anom",sev_table2

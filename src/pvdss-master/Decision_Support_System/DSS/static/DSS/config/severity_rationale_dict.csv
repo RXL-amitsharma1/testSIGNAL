@@ -1,0 +1,19 @@
+severity_node,text
+new_serious,Serious
+new_serious_death,Results in Death
+new_serious_threat,Life Threatening
+new_serious_med_imp,Other Medically Important Condition
+new_serious_int_req,Intervention required
+new_serious_hosp,Hospitalized
+new_serious_prlg_host,Caused/Prolonged Hospitalisation
+new_serious_disbale,Disabling/Incapacitating
+new_serious_cong_anom,Congenital Anomaly/Birth Defect
+percent_serious,Serious(=percent_serious%)
+percent_serious_death,Results in Death(=percent_serious_death%)
+percent_serious_threat,Life Threatening(=percent_serious_threat%)
+percent_serious_med_imp,Other Medically Important Condition(=percent_serious_med_imp%)
+percent_serious_int_req,Intervention required(=percent_serious_int_req%)
+percent_serious_hosp,Hospitalized(=percent_serious_hosp%)
+percent_serious_prlg_host,Caused/Prolonged Hospitalisation(=percent_serious_prlg_host%)
+percent_serious_disbale,Disabling/Incapacitating(=percent_serious_disbale%)
+percent_serious_cong_anom,Congenital Anomaly/Birth Defect(=percent_serious_cong_anom%)
