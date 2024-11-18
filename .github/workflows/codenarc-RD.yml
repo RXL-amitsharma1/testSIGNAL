@@ -1,39 +1,57 @@
-name: 'Run codenarc with reviewdog'
-description: '🐶 Run codenarc with reviewdog on pull requests to improve code review experience.'
-author: 'luiszimmermann'
-inputs:
-  github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
-  workdir:
-    description: 'Working directory relative to the root directory.'
-    default: '.'
-  ### Flags for reviewdog ###
-  level:
-    description: 'Report level for reviewdog [info,warning,error]'
-    default: 'error'
-  reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
-    default: 'github-pr-check'
-  filter_mode:
-    description: |
-      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is added.
-    default: 'added'
-  fail_on_error:
-    description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: 'false'
-  reviewdog_flags:
-    description: 'Additional reviewdog flags'
-    default: ''
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+name: CodeNarc Analysis
 
-# Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
-branding:
-  icon: 'check'
-  color: 'blue'
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  codenarc:
+    name: Run CodeNarc
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java environment
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11  # Specify your Java version
+
+      # Step 3: Cache Gradle dependencies
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # Step 4: Run CodeNarc analysis
+      - name: Run CodeNarc
+        run: ./gradlew codenarcMain
+
+      # Step 5: Parse and report CodeNarc results (optional)
+      - name: Upload CodeNarc report
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: codenarc-report
+          path: build/reports/codenarc/codenarcMain.html
+
+      # Step 6: Comment on PR with the results
+      - name: Comment on PR with CodeNarc results
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f build/reports/codenarc/codenarcMain.html ]; then
+            echo "CodeNarc found issues. Uploading results to PR."
+            echo "CodeNarc analysis results can be found in the attached artifact." > codenarc-summary.md
+            gh pr comment ${{ github.event.pull_request.number }} --body-file codenarc-summary.md
+          else
+            echo "No CodeNarc report found. Skipping comment."
