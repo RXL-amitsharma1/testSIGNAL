@@ -27,6 +27,8 @@ class AlertDocumentNotificationService implements LinkHelper, NotificationHelper
         }
     }
 
+    
+
     def docDueWithinDaysAtGivenTime(AdHocAlert alert, AlertDocument document, DateTime givenTime){
         alert.priority.value == "High" && _dueWithinDaysOfGivenTime ( document.targetDate, 2, givenTime ) ||
         alert.priority.value != "High" && _dueWithinDaysOfGivenTime ( document.targetDate, 7, givenTime )
