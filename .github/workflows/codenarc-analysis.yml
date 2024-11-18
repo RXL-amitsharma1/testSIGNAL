@@ -23,11 +23,17 @@ jobs:
           java-version: 11
           distribution: temurin
 
-      # Step 3: Run CodeNarc analysis
+      # Step 3: Set up Gradle
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 7.6
+
+      # Step 4: Run CodeNarc analysis
       - name: Run CodeNarc
         run: ./gradlew codenarcMain
 
-      # Step 4: Upload CodeNarc report
+      # Step 5: Upload CodeNarc report
       - name: Upload CodeNarc report
         if: success()
         uses: actions/upload-artifact@v3
