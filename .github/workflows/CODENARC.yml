@@ -20,38 +20,17 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: 11  # Specify your Java version
+          java-version: 11
+          distribution: temurin
 
-      # Step 3: Cache Gradle dependencies
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
-      # Step 4: Run CodeNarc analysis
+      # Step 3: Run CodeNarc analysis
       - name: Run CodeNarc
         run: ./gradlew codenarcMain
 
-      # Step 5: Parse and report CodeNarc results (optional)
+      # Step 4: Upload CodeNarc report
       - name: Upload CodeNarc report
         if: success()
         uses: actions/upload-artifact@v3
         with:
           name: codenarc-report
           path: build/reports/codenarc/codenarcMain.html
-
-      # Step 6: Comment on PR with the results
-      - name: Comment on PR with CodeNarc results
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ -f build/reports/codenarc/codenarcMain.html ]; then
-            echo "CodeNarc found issues. Uploading results to PR."
-            echo "CodeNarc analysis results can be found in the attached artifact." > codenarc-summary.md
-            gh pr comment ${{ github.event.pull_request.number }} --body-file codenarc-summary.md
-          else
-            echo "No CodeNarc report found. Skipping comment."
