@@ -9,6 +9,7 @@ import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_CONFIGURATION_CRUD'])
 
+
 class AccessControlGroupController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

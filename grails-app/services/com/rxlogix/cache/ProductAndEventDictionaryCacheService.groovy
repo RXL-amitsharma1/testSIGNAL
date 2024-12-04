@@ -3,7 +3,8 @@ package com.rxlogix.cache
 import com.rxlogix.mapping.LmProduct
 import com.rxlogix.mapping.MedDraPT
 import grails.gorm.transactions.Transactional
-import com.rxlogix.Constants
+import com.rxlogix.Constants 
+
 
 /**
  * Cache service for the product dictionary.
